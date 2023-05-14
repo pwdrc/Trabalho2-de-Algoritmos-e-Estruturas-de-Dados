@@ -2,20 +2,23 @@
 #define MAX_TITULO 100
 #define MAX_LIVROS 1000
 
-typedef struct {
-    int id;
-    char autor[MAX_AUTOR];
-    char titulo[MAX_TITULO];
+/**
+typedef struct Livro {
+  int id;
+  char autor[MAX_AUTOR];
+  char titulo[MAX_TITULO];
 } Livro;
+*/
 
-typedef struct {
-    int id;
-    int offset;
+typedef struct IndicePrimario {
+  int id;
+  int bo;
 } IndicePrimario;
 
-typedef struct {
-    char autor[MAX_AUTOR];
-    int offset; // int id
+typedef struct IndiceSecundario {
+  char autor[MAX_AUTOR];
+  int bo;
+  struct IndiceSecundario* proximo;
 } IndiceSecundario;
 
 void inserir_livro(char* id, char* titulo, char* autor);

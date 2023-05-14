@@ -1,35 +1,58 @@
+#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <locale.h>
+#define TAM_TITULO 100
+#define TAM_AUTOR 50
 
 int main() {
-  char input[100];
-  fgets(input, 100, stdin);
 
-  while (input != "EXIT") {
-    char op[10], id[10], titulo[50], autor[50];
-    printf("OI");
-    printf("%s", id);
+  int id;
+  char titulo[TAM_TITULO];
+  char autor[TAM_AUTOR];
 
+  char op[12];
 
-    if(op == "ADD"){//Adicionando registro
-         printf("Inserindo");
-       //inserindo --- 
-     
+  do {
+
+    scanf("%s", op);
+    if (strcmp(op, "EXIT") == 0)
+      break;
+    //printf("%s", op);
+
+    else if(strcmp(op, "ADD") == 0) {
+      if (scanf("id='%d' titulo='%[^']' autor='%[^']'", &id, titulo, autor) == 3) {
+        printf("adicionando %d %s %s\n", id, titulo, autor);
+      } else {
+        printf("Comando de adição inválido\n");
+      }
     }
-    else if (op == "SEARCH"){//Buscando resgistros
-        printf("buscando");
-      //isso tbm precisa ir para uma função 
       
-    }else if(op == "REMOVE"){
-      printf("Removendo");
-      //leva para a função remover 
-    }  
+    else if(strcmp(op, "SEARCH") == 0) {
+      if (scanf("autor='%49[^']'", autor) == 1) {
+        // Realizar busca por autor
+        printf("Buscar por autor: %s\n", autor);
+        
+      } else if (scanf("id='%d'", &id) == 1) {
+        // Realizar busca por ID
+        printf("Buscar por ID: %d\n", id);
     
-    fgets(input, 100, stdin);
+      } else {
+        // Comando de busca inválido
+        printf("Comando de busca inválido\n");
+      }
+    }
 
-  }
+    else if(strcmp(op, "REMOVE") == 0) {
+      printf("remover");
+    }
+
+    else {
+      printf("comando não encontrado\nsaindo...");
+      break;
+    }
+
+  } while (strcmp(op, "EXIT") != 0);
 
   return 0;
 }

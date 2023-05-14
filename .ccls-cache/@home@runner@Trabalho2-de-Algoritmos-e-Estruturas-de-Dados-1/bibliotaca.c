@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include "biblioteca.h"
-
+/**
 void inserir_livro(char* id, char* titulo, char* autor) {
   //Abrindo arquivo
     FILE *arquivo = fopen("livros.txt", "a");
@@ -11,7 +11,7 @@ void inserir_livro(char* id, char* titulo, char* autor) {
         printf("Erro ao abrir o arquivo!\n");
         return;
       }
-    //verificar se já a chave igual ou não 
+    //verificar se já há chave igual ou não 
     //escrevendo os registros no arquivo
     fprintf(arquivo, "%s %s %s\n", id, titulo, autor);
     fclose(arquivo);
@@ -27,3 +27,4 @@ void buscar_livro() {
 void remover_livro(){
   
 }
+*/
