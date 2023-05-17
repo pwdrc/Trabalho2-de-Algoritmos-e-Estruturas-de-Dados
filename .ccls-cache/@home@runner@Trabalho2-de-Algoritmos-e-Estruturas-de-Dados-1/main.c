@@ -17,9 +17,23 @@ int main() {
       char titulo[100];
       char autor[100];
 
-      sscanf(input, "ADD id='%d' titulo='%99[^\n]' autor='%99[^\n]'", &id, titulo, autor);
-      
-      inserir_livro(id, titulo, autor);
+      sscanf(input, "ADD id='%d' titulo='%99[^']' autor='%99[^']'", &id, titulo, autor);
+
+      // tratando casos de inserção
+      int add = inserir_livro(id, titulo, autor);
+
+      // inserção bem sucecdida
+      if(add == 0) {
+        printf("----------------------------------------------------------\n");
+        printf("Registro inserido\n");
+      } 
+
+      // inserção mal sucedida
+      else if(add == 2) {
+        printf("----------------------------------------------------------\n");
+        printf("Erro ao inserir registro, chave primária duplicada\n");
+      }
+
 
     } else if (strncmp(input, "SEARCH", 6) == 0) {
       

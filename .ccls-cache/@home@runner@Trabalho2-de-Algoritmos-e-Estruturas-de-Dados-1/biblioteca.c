@@ -4,7 +4,7 @@
 #include "biblioteca.h"
 
 int inserir_livro(int id, char* titulo, char* autor) {
-  printf("%d %s %s\n", id, titulo, autor);
+
     // Abrindo arquivos - registros e índices
     FILE* registro = fopen("livros.txt", "a");
     FILE* primario = fopen("primario.txt", "a");
@@ -38,7 +38,8 @@ int inserir_livro(int id, char* titulo, char* autor) {
     fprintf(secundario, "bo:%ld\n", s->bo);
     fprintf(secundario, "id:%d\n\n", p->id);
     // fim do registro
-   
+
+    // registo de livros
     fseek(registro, 0, SEEK_END);
     long int bo = ftell(registro);
     fprintf(registro, "bo:%ld\n", bo);
@@ -56,50 +57,11 @@ int inserir_livro(int id, char* titulo, char* autor) {
     printf("Entrada inserida com sucesso!\n");
     return 0;
 }
-/** int inserir_livro(int id, char *titulo, char *autor) {
-  //Abrindo arquivos - registros e índices
-    FILE *registro = fopen("livros.txt", "a");
-    FILE *primario = fopen("primario.txt", "a");
-    FILE *secundario = fopen("secundario.txt", "a");
 
-    IndicePrimario *p = (IndicePrimario*) malloc(sizeof(IndicePrimario));
-    IndiceSecundario *s = (IndiceSecundario*) malloc(sizeof(IndiceSecundario));
-      //verificando arquivo ta certo
-      if (registro == NULL || primario == NULL || secundario == NULL || p == NULL || s == NULL) {
-        printf("Erro ao abrir o arquivo!\n");
-        return 1;
-      }
-    //verificar se já há chave igual ou não 
-    // busca
-    // fazer depois
+int busca_primaria();
 
-    
-    //escrevendo os registros no arquivo
+int busca_secundaria();
 
-    //arquivo primario
-    fseek(primario, 0, SEEK_END);
-    p->bo = ftell(primario);
-    fwrite(&p->bo , 1, sizeof(s->bo), primario);
-    fwrite(id , 1, sizeof(id), primario);
-    fprintf(primario, "%d %ld\n", p->id, p->bo);
-  
-    //secundário
-    fwrite(autor, 1, sizeof(autor), secundario);
-    fwrite(bo, 1, sizeof(bo), secundario);
-    fprintf(secundario, "%s %ld\n", s->autor, s->bo);
-
-    
-    fprintf(registro, "%d %s %s\n", id, titulo, autor);
-    fclose(secundario);
-    fclose(primario);
-    fclose(registro);
-    free(p);
-    free(s);
-
-    //Escrevendo a saida
-    //printf("Entrada inserida com sucesso!\n"); - Aqui tem que imprimir oq foi registrado 
-}
-*/
 /**
 void buscar_livro(IndicePrimario id){
 int registro;
