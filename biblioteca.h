@@ -1,4 +1,4 @@
-#define MAX_AUTOR 50
+#define MAX_AUTOR 100
 #define MAX_TITULO 100
 #define MAX_LIVROS 1000
 
@@ -12,15 +12,15 @@ typedef struct Livro {
 
 typedef struct IndicePrimario {
   int id;
-  int bo;
+  long int bo;
 } IndicePrimario;
 
 typedef struct IndiceSecundario {
   char autor[MAX_AUTOR];
-  int bo;
-  struct IndiceSecundario* proximo;
+  long int bo;
+  struct IndiceSecundario *proximo;
 } IndiceSecundario;
 
-void inserir_livro(char* id, char* titulo, char* autor);
-void buscar_livro();
+int inserir_livro(int id, char *titulo, char *autor);
+//void buscar_livro(IndicePrimario id);
 void remover_livro();
